@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+// protoc --proto_path=protobuf/data/ --go_out=plugins=grpc:data protobuf/data/*
+
+package data;
+option go_package = "data";
+
+service Data {
+    // SiteSave creates or updates the site.
+    rpc SiteSave (Site) returns(Result);
+    // SiteSearch searches for sites.
+    rpc SiteSearch (SiteSearchRequest) returns(SiteSearchResult);
+}
+
+message Result {}
+
+// Site - data metrics are for a site.
+message Site {
+    // SiteID for the site e.g., TAUP
+    string site_iD = 1;
+    // Latitude and Longitude, only uses three digits of precision after decimal
+    float latitude = 2;
+    float longitude = 3;
+}
+
+message SiteSearchRequest{}
+
+message SiteSearchResult{
+    repeated Site result = 1;
+}

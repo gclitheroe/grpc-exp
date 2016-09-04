@@ -1,2 +1,6 @@
 .idea/
 grpc-exp.iml
+mtr-api/certs/
+mtr-client/mtr-client
+mtr-api/mtr-api
+docker-build-tmp/

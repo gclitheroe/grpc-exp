@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+// protoc --proto_path=protobuf/field/ --go_out=plugins=grpc:field protobuf/field/*
+
+package field;
+option go_package = "field";
+
+service Field {
+    // DeviceSave creates or updates the Device.
+    rpc DeviceSave (Device) returns(Result);
+}
+
+message Result {}
+
+// Device - metrics are collected for a device.
+message Device {
+    // DeviceID e.g., idu-birchfarm.
+    string device_iD = 1;
+    // ModelID for the device e.g., Trimble-NetR9.
+    string model_iD = 2;
+    // Latitude and Longitude, only uses three digits of precision after decimal.
+    float latitude = 3;
+    float longitude = 4;
+}
+
